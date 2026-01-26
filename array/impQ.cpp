@@ -1,5 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
+
 
 int main(){
     //longest subbarray with sum k
@@ -22,4 +21,76 @@ int main(){
     }
     cout << len;
 
+    // 2 sum problem
+    string read(int n, vector<int> book, int target)
+
+    // Write your code here.
+    sort(book.begin(), book.end());
+    int left =0;
+    int right = book.size()-1;
+    while (left < right){
+        int sum = book[left] + book[right];
+        if( sum == target){
+            return "YES";
+        }
+        else if(sum< target) left++;
+        else right--;
+    }
+    return "NO";
 }
+
+//single number in a sorted array
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int xorr = 0;
+        for (int i=0; i<nums.size(); i++){
+            xorr = xorr^nums[i];
+        }        
+        return xorr;
+    }
+};
+
+//maximum consecutive ones
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int maxi = 0;
+        int count = 0;
+        for (int i=0; i<nums.size(); i++){
+            if (nums[i] == 1){
+                count++;
+                maxi = max(count, maxi);
+            }
+            else{
+                count = 0;
+            }
+        }
+        return maxi;
+        
+    }
+};
+
+//moves zeroes
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int n = nums.size();
+        int j=-1;
+        for(int i=0;i<n;i++){
+            if(nums[i] == 0){
+                j = i;
+                break;
+            }
+        }   
+        if (j==-1) return;
+        for(int i=j+1; i<n; i++){
+            if (nums[i] != 0){
+                swap(nums[j], nums[i]);
+                j++;
+            }
+        }     
+    }
+};
+
+
