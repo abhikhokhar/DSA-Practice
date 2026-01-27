@@ -93,4 +93,60 @@ public:
     }
 };
 
+//majority element
+//moore voting algorithm
+class Solution {
+  public:
+    int majorityElement(vector<int>& arr) {
+        // code here
+        int cnt =0;
+        int el;
+        for (int i=0; i<arr.size();i++){
+            if (cnt == 0){
+                 cnt=1;
+            el = arr[i];
+            }
+            else if( arr[i] == el){
+                cnt++;
+            }
+            else cnt--;
+        }
+        int cnt1=0;
+        for(int i=0; i< arr.size();i++){
+            if(arr[i] == el){
+                cnt1++;
+            }
+        }
+        if(cnt1>arr.size()/2){
+            return el;
+        }
+        return -1;
+    }
+    
+};
+
+//sort an array of 0s, 1s and 2s
+//dutch national flag algorithm
+class Solution {
+  public:
+    void sort012(vector<int>& arr) {
+        // code here
+        int low=0, mid=0, high= arr.size()-1;
+        while(mid<=high){
+            if(arr[mid] == 0){
+                swap(arr[mid], arr[low]);
+                mid++;
+                low++;
+            }
+            else if(arr[mid] == 1){
+                mid++;
+            }
+            else{
+                swap(arr[mid], arr[high]);
+                high--;
+            }
+        }
+    }
+};
+
 
